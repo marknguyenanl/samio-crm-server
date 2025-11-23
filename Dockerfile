@@ -3,14 +3,19 @@ FROM php:8.2-fpm-alpine AS build
 
 # Install system dependencies
 RUN apk add --no-cache \
-    git \
-    curl \
+    autoconf \
+    g++ \
+    make \
+    oniguruma-dev \
     libpng-dev \
     libjpeg-turbo-dev \
     freetype-dev \
     libzip-dev \
     zip \
-    unzip
+    unzip \
+    bash \
+    git \
+    curl
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
