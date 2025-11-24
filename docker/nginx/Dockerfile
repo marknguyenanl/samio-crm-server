@@ -8,7 +8,7 @@ RUN apk add --no-cache nginx bash libpng libjpeg-turbo freetype \
 WORKDIR /var/www/html
 
 # Copy Nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY ../../nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose HTTP (Gateway terminates TLS)
 EXPOSE 80
