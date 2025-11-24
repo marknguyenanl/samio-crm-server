@@ -9,8 +9,8 @@ steps:
       - echo "Logging into Harbor..."
       - podman login $REGISTRY -u admin -p Harbor12345
 
-      - echo "Building image..."
-      - podman build -t $IMAGE -f Dockerfile .
+      - echo "Building images via podman-compose..."
+      - podman-compose -f docker-compose.yml build
 
-      - echo "Pushing image..."
-      - podman push $IMAGE
+      - echo "Pushing images via podman-compose..."
+      - podman-compose -f docker-compose.yml push

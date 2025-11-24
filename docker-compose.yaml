@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  php-fpm:
+    build:
+      context: .
+      dockerfile: docker/php-fpm/Dockerfile
+    image: harbor.anrostech.com/anros/crm-php-fpm:latest
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    image: harbor.anrostech.com/anros/crm-nginx:latest
