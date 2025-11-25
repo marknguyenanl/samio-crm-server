@@ -17,8 +17,6 @@ services:
     container_name: laravel-nginx
     image: harbor.anrostech.com/anros/crm-back-nginx:latest
     restart: unless-stopped
-    ports:
-      - "8080:80"  # map host port 8080 → container port 80
     depends_on:
       - php
     networks:
