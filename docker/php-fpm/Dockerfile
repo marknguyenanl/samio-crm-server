@@ -8,6 +8,8 @@ RUN apk add --no-cache \
 
 WORKDIR /var/www/html
 
+COPY . .
+
 RUN composer install --no-dev --optimize-autoloader \
     && php artisan config:cache \
     && php artisan route:cache \

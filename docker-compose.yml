@@ -1,12 +1,11 @@
 services:
   php:
     build:
-      context: docker/php-fpm/.
+      context: .
+      dockerfile: docker/php-fpm/Dockerfile
     container_name: laravel-php
     image: harbor.anrostech.com/anros/crm-php-fpm:latest
     restart: unless-stopped
-    volumes:
-      - .:/var/www/html
     networks:
       - app-network
 
