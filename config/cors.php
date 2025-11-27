@@ -21,7 +21,7 @@ return [
     'allowed_methods' => ['*'],
 
     // 'allowed_origins' => ['crm.anrostech.com', 'anrostech.com'],
-    'allowed_origins' => ['https://crm.anrostech.com', 'https://anrostech.com'],
+    'allowed_origins' => ['http://localhost:5173', 'https://crm.anrostech.com', 'https://anrostech.com'],
 
     'allowed_origins_patterns' => [],
 
