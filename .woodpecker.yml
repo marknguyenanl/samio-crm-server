@@ -29,7 +29,7 @@ steps:
       - wait
 
   update_deployment_repo:
-    image: alpine:git
+    image: alpine/git
     depends_on:
       - build_image
     environment:
