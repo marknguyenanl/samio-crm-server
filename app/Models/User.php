@@ -6,8 +6,8 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable; // ✅ extends this
-use Illuminate\Notifications\Notifiable; // For JWT
+use Carbon\Carbon;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
 /**
@@ -24,20 +24,24 @@ use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
  */
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
+    protected $table = 'users';
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     protected $hidden = [
+        'name',
         'password',
+        'remember_token',
+        'email_verified_at',
         'remember_token',
     ];
 
-    // JWT required methods
+    protected $fillable = [
+        'email',
+    ];
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
