@@ -1,17 +1,13 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use Illuminate\Http\Middleware\HandleCors;
 use Illuminate\Support\Facades\Route;
 
 //
-// Catch-all OPTIONS requests for preflight
-Route::options('{any}', function () {
-    return response()->json([], 200);
-})->where('any', '.*');
-
 Route::group([
-    'middleware' => 'api',
-    'prefix' => 'api/crm/v1',
+    'middleware' => ['api', HandleCors::class],
+    'prefix' => '/crm/v1',
 ], function () {
     Route::post('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
