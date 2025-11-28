@@ -15,15 +15,13 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'crm/v1/*'],
-    // 'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
     'allowed_methods' => ['*'],
 
-    // 'allowed_origins' => ['crm.anrostech.com', 'anrostech.com'],
-    'allowed_origins' => ['http://localhost:5173', 'https://crm.anrostech.com', 'https://anrostech.com'],
+    'allowed_origins' => ['http://localhost:5173'],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['/^https?:\/\/(?:.*\.)?anrostech\.com$/i'],
 
     'allowed_headers' => ['*'],
 
