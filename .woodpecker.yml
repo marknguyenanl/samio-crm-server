@@ -35,7 +35,6 @@ steps:
       GIT_OWNER: marknguyenanl
       GIT_REPO: rr
       GIT_URL: github.com
-      FILES_NAME: crm-server
       IMAGE_BASE: samio/crm
     commands:
       - |
