@@ -25,5 +25,5 @@ Route::group([
     Route::get('/leads', [LeadController::class, 'getLeads'])->name('getLeads');
     Route::get('/leads/{id}', [LeadController::class, 'getLead'])->name('getLead');
     Route::patch('/leads/{id}', [LeadController::class, 'updateLead'])->name('updateLead');
-    Route::post('/demo', [AuthController::class, 'demoAccount'])->name('demoAccount');
+    Route::delete('/leads/{id}', [LeadController::class, 'deleteLead'])->name('deleteLead');
 });

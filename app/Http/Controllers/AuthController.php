@@ -43,7 +43,7 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function demoAccount(Request $request): JsonResponse
+    public function demoAccount(): JsonResponse
     {
         $credentials = ([
             'email' => 'demo@samiohome.com',

@@ -28,7 +28,7 @@ class LeadController extends Controller
         }
 
         // Validate allowed sort fields (security)
-        $allowedSorts = ['name', 'tel', 'email', 'source', 'address'];
+        $allowedSorts = ['created_at', 'name', 'tel', 'email', 'source', 'address'];
         if (in_array($sortBy, $allowedSorts) && in_array($sortDir, ['asc', 'desc'])) {
             $query->orderBy($sortBy, $sortDir);
         }
@@ -48,10 +48,7 @@ class LeadController extends Controller
         ]);
     }
 
-    /**
-     * Add a new lead.
-     *
-     * @return \Illuminate\Http\JsonResponse
+    /** Add a new lead. @return \Illuminate\Http\JsonResponse
      */
     public function addLead(Request $request)
     {
@@ -99,5 +96,13 @@ class LeadController extends Controller
             'data' => $lead->fresh(),
             'message' => 'Lead updated successfully.',
         ], 200);
+    }
+
+    public function deleteLead(string $id)
+    {
+        $lead = Lead::findOrFail($id);   // or route model binding: public function destroy(Lead $lead)
+        $lead->delete();
+
+        return response()->json(null, 204);
     }
 }
