@@ -16,10 +16,14 @@ Route::group([
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::post('/refresh', [AuthController::class, 'refresh'])->name('refresh');
         Route::post('/me', [AuthController::class, 'me'])->name('me');
+        Route::post('/demo', [AuthController::class, 'demoAccount'])->name('demoAccount');
     });
     Route::get('/health', function () {
         return ['status' => 'ok'];
     });
     Route::post('/leads', [LeadController::class, 'addLead'])->name('addLead');
     Route::get('/leads', [LeadController::class, 'getLeads'])->name('getLeads');
+    Route::get('/leads/{id}', [LeadController::class, 'getLead'])->name('getLead');
+    Route::patch('/leads/{id}', [LeadController::class, 'updateLead'])->name('updateLead');
+    Route::post('/demo', [AuthController::class, 'demoAccount'])->name('demoAccount');
 });

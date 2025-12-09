@@ -43,6 +43,21 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
+    public function demoAccount(Request $request): JsonResponse
+    {
+        $credentials = ([
+            'email' => 'demo@samiohome.com',
+            'password' => 'demoaccount',
+        ]);
+
+        // explicitly use 'api' guard (JWT)
+        if (! $token = auth()->guard()->attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        return $this->respondWithToken($token);
+    }
+
     // get the authenticated user
     public function me(): JsonResponse
     {
