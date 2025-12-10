@@ -16,7 +16,6 @@ Route::group([
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::post('/refresh', [AuthController::class, 'refresh'])->name('refresh');
         Route::post('/me', [AuthController::class, 'me'])->name('me');
-        Route::post('/demo', [AuthController::class, 'demoAccount'])->name('demoAccount');
     });
     Route::get('/health', function () {
         return ['status' => 'ok'];
