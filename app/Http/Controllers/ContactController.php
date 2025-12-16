@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
@@ -119,5 +120,37 @@ class ContactController extends Controller
         $lead->delete();
 
         return response()->json(null, 204);
+    }
+
+    /**
+     * Get toal leads per day (contacts with stage = 'lead')
+     *
+     * Optional query params:
+     *  - from: YYYY-MM-DD
+     *  - to: YYYY-MM-DD
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getDailyLeads(Request $request)
+    {
+        $query = Contact::query()
+            ->selectRaw('DATE(created_at) as date, COUNT(*) as total')
+            ->where('stage', 'lead')
+            ->groupBy(DB::raw('DATE(created_at)'))
+            ->orderBy('date', 'desc');
+        // Optional: filter date range
+        if ($request->filled('from')) {
+            $query->whereDate('created_at', '>=', $request->get('from'));
+        }
+        if ($request->filled('to')) {
+            $query->whereDate('created_at', '<=', $request->get('to'));
+        }
+
+        $date = $query->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $date,
+        ]);
     }
 }

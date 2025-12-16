@@ -21,5 +21,3 @@ The following sections will guide you through setting up the Laravel application
 # ENV
 
 # BUSINESS LOGIC
-
-1. leadTable present contacts.stage == 'lead'

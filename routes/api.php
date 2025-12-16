@@ -22,7 +22,7 @@ Route::group([
     });
     Route::post('/contacts', [ContactController::class, 'addContact'])->name('addContact');
     Route::get('/contacts', [ContactController::class, 'getContacts'])->name('getContacts');
-    Route::get('/contacts/{id}', [ContactController::class, 'getContact'])->name('getContact');
     Route::patch('/contacts/{id}', [ContactController::class, 'updateContact'])->name('updateContact');
     Route::delete('/contacts/{id}', [ContactController::class, 'deleteContact'])->name('deleteContact');
+    Route::get('/contacts/daily-leads', [ContactController::class, 'getDailyLeads'])->name('getDailyLeads');
 });
