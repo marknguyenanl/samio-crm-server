@@ -19,3 +19,7 @@ To work with the Samio CRM Server, you should be comfortable with:
 The following sections will guide you through setting up the Laravel application, configuring your environment, and running the Samio CRM Server locally for development.
 
 # ENV
+
+# BUSINESS LOGIC
+
+1. leadTable present contacts.stage == 'lead'

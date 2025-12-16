@@ -2,26 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lead;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
-class LeadController extends Controller
+class ContactController extends Controller
 {
     /**
-     * Store a newly created lead via API.
+     * Store a newly created contact via API.
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getLeads(Request $request)
+    public function getContacts(Request $request)
     {
         $perPage = $request->get('per_page', 100); // /v1/leads?per_page=20
 
         $sortBy = $request->get('sort_by', 'created_at');
         $sortDir = $request->get('sort_dir', 'desc');
 
-        $query = Lead::query();
+        $query = Contact::query();
 
         // ✅ Search by name
+        if ($request->filled('stage')) {
+            $stage = $request->stage;
+            $query->where('stage', $stage);
+        }
         if ($request->filled('search')) {
             $search = $request->search;
             $query->where('name', 'like', "%{$search}%");
@@ -29,12 +33,16 @@ class LeadController extends Controller
 
         // Validate allowed sort fields (security)
         $allowedSorts = ['created_at', 'name', 'tel', 'email', 'source', 'address'];
-        if (in_array($sortBy, $allowedSorts) && in_array($sortDir, ['asc', 'desc'])) {
-            $query->orderBy($sortBy, $sortDir);
+        $sortDir = strtolower($sortDir) === 'asc' ? 'asc' : 'desc';
+
+        if (! in_array($sortBy, $allowedSorts, true)) {
+            $sortBy = 'created_at';
         }
 
+        $query->orderBy($sortBy, $sortDir);
+
         $leads = $query->paginate($perPage);
-        // $leads = Lead::orderBy('created_at', 'desc')->get();
+        // $leads = Contact::orderBy('created_at', 'desc')->get();
 
         return response()->json([
             'success' => true,
@@ -50,7 +58,7 @@ class LeadController extends Controller
 
     /** Add a new lead. @return \Illuminate\Http\JsonResponse
      */
-    public function addLead(Request $request)
+    public function addContact(Request $request)
     {
         $data = $request->validate([
             'name' => 'nullable|string|max:255',
@@ -60,12 +68,12 @@ class LeadController extends Controller
             'address' => 'nullable|string|max:255',
         ]);
 
-        $lead = Lead::create($data);
+        $lead = Contact::create($data);
 
         return response()->json([
             'success' => true,
             'data' => $lead,
-            'message' => 'Lead created successfully.',
+            'message' => 'Contact created successfully.',
         ], 201);
     }
 
@@ -75,10 +83,11 @@ class LeadController extends Controller
      * @param  int|string  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function updateLead(Request $request, $id)
+    public function updateContact(Request $request, $id)
     {
         $data = $request->validate([
             'name' => 'nullable|string|max:255',
+            'stage' => 'nullable|string|max:255',
             'tel' => 'nullable|string|max:255',
             'email' => 'nullable|string|max:255',
             'source' => 'nullable|string|max:255',
@@ -86,7 +95,7 @@ class LeadController extends Controller
         ]);
 
         // Find lead or fail with 404
-        $lead = Lead::findOrFail($id);
+        $lead = Contact::findOrFail($id);
 
         // Update only the validated fields
         $lead->update($data);
@@ -94,13 +103,19 @@ class LeadController extends Controller
         return response()->json([
             'success' => true,
             'data' => $lead->fresh(),
-            'message' => 'Lead updated successfully.',
+            'message' => 'Contact updated successfully.',
         ], 200);
     }
 
-    public function deleteLead(string $id)
+    /**
+     * Update an existing lead.
+     *
+     * @param  int|string  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteContact(string $id)
     {
-        $lead = Lead::findOrFail($id);   // or route model binding: public function destroy(Lead $lead)
+        $lead = Contact::findOrFail($id);   // or route model binding: public function destroy(Lead $lead)
         $lead->delete();
 
         return response()->json(null, 204);

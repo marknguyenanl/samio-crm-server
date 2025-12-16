@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\LeadController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Http\Middleware\HandleCors;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +20,9 @@ Route::group([
     Route::get('/health', function () {
         return ['status' => 'ok'];
     });
-    Route::post('/leads', [LeadController::class, 'addLead'])->name('addLead');
-    Route::get('/leads', [LeadController::class, 'getLeads'])->name('getLeads');
-    Route::get('/leads/{id}', [LeadController::class, 'getLead'])->name('getLead');
-    Route::patch('/leads/{id}', [LeadController::class, 'updateLead'])->name('updateLead');
-    Route::delete('/leads/{id}', [LeadController::class, 'deleteLead'])->name('deleteLead');
+    Route::post('/contacts', [ContactController::class, 'addContact'])->name('addContact');
+    Route::get('/contacts', [ContactController::class, 'getContacts'])->name('getContacts');
+    Route::get('/contacts/{id}', [ContactController::class, 'getContact'])->name('getContact');
+    Route::patch('/contacts/{id}', [ContactController::class, 'updateContact'])->name('updateContact');
+    Route::delete('/contacts/{id}', [ContactController::class, 'deleteContact'])->name('deleteContact');
 });
