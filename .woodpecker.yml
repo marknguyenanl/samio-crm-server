@@ -7,7 +7,7 @@ steps:
     privileged: true
     environment:
       REGISTRY: harbor.anrostech.com
-      IMAGE_BASE: samio/crm
+      IMAGE_BASE: anros/crm
       REGISTRY_USER:
         from_secret: registry_user
       REGISTRY_PASS:
@@ -35,7 +35,7 @@ steps:
       GIT_OWNER: marknguyenanl
       GIT_REPO: rr
       GIT_URL: github.com
-      IMAGE_BASE: samio/crm
+      IMAGE_BASE: anros/crm
     commands:
       - |
         IMAGE_TAG=${CI_COMMIT_BRANCH}-${CI_PIPELINE_CREATED}
