@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -11,17 +9,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('contact_stage_histories', function (Blueprint $table) {
-            $table->foreign('contact_id')
-                ->references('id')
-                ->on('contacts')
-                ->cascadeOnDelete();
-
-            $table->foreign('contact_stage_id')
-                ->references('id')
-                ->on('contact_stages')
-                ->cascadeOnDelete();
-        });
+        // Intentionally left empty because foreign keys are already defined
     }
 
     /**
@@ -29,9 +17,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('contact_stage_histories', function (Blueprint $table) {
-            $table->dropForeign(['contact_id']);
-            $table->dropForeign(['contact_stage_id']);
-        });
+        // Intentionally left empty because foreign keys are already defined
     }
 };
