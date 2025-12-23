@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('contact_stage_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('contact_id')
+                ->constrained()
+                ->cascadeOnDelete();
+            $table->foreignId('contact_stage_id')
+                ->constrained()
+                ->cascadeOnDelete();
             $table->timestamp('created_at');
         });
     }
