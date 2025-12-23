@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\ContactStageHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +16,7 @@ class ContactController extends Controller
      */
     public function getContacts(Request $request)
     {
-        $perPage = $request->get('per_page', 100); // /v1/leads?per_page=20
+        $perPage = $request->get('per_page', 100); // /v1/contacts?per_page=20
 
         $sortBy = $request->get('sort_by', 'created_at');
         $sortDir = $request->get('sort_dir', 'desc');
@@ -42,44 +43,52 @@ class ContactController extends Controller
 
         $query->orderBy($sortBy, $sortDir);
 
-        $leads = $query->paginate($perPage);
-        // $leads = Contact::orderBy('created_at', 'desc')->get();
+        $contacts = $query->paginate($perPage);
+        // $contacts = Contact::orderBy('created_at', 'desc')->get();
 
         return response()->json([
             'success' => true,
-            'data' => $leads->items(),
+            'data' => $contacts->items(),
             'meta' => [
-                'current_page' => $leads->currentPage(),
-                'last_page' => $leads->lastPage(),
-                'per_page' => $leads->perPage(),
-                'total' => $leads->total(),
+                'current_page' => $contacts->currentPage(),
+                'last_page' => $contacts->lastPage(),
+                'per_page' => $contacts->perPage(),
+                'total' => $contacts->total(),
             ],
         ]);
     }
 
-    /** Add a new lead. @return \Illuminate\Http\JsonResponse
+    /** Add a new contact. @return \Illuminate\Http\JsonResponse
      */
     public function addContact(Request $request)
     {
         $data = $request->validate([
             'name' => 'nullable|string|max:255',
+            'stage_id' => 'nullable|string|max:255',
             'tel' => 'nullable|string|max:255',
             'email' => 'nullable|string|max:255',
             'source' => 'nullable|string|max:255',
             'address' => 'nullable|string|max:255',
         ]);
 
-        $lead = Contact::create($data);
+        $defaultStage = 1;
+        $contact = Contact::create($data);
+
+        // add history
+        ContactStageHistory::create([
+            'contact_id' => $contact->id,
+            'contact_stage_id' => $defaultStage,
+        ]);
 
         return response()->json([
             'success' => true,
-            'data' => $lead,
+            'data' => $contact,
             'message' => 'Contact created successfully.',
         ], 201);
     }
 
     /**
-     * Update an existing lead.
+     * Update an existing contact.
      *
      * @param  int|string  $id
      * @return \Illuminate\Http\JsonResponse
@@ -88,42 +97,42 @@ class ContactController extends Controller
     {
         $data = $request->validate([
             'name' => 'nullable|string|max:255',
-            'stage' => 'nullable|string|max:255',
+            'stage_id' => 'nullable|string|max:255',
             'tel' => 'nullable|string|max:255',
             'email' => 'nullable|string|max:255',
             'source' => 'nullable|string|max:255',
             'address' => 'nullable|string|max:255',
         ]);
 
-        // Find lead or fail with 404
-        $lead = Contact::findOrFail($id);
+        // Find contact or fail with 404
+        $contact = Contact::findOrFail($id);
 
         // Update only the validated fields
-        $lead->update($data);
+        $contact->update($data);
 
         return response()->json([
             'success' => true,
-            'data' => $lead->fresh(),
+            'data' => $contact->fresh(),
             'message' => 'Contact updated successfully.',
         ], 200);
     }
 
     /**
-     * Update an existing lead.
+     * Update an existing contact.
      *
      * @param  int|string  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function deleteContact(string $id)
     {
-        $lead = Contact::findOrFail($id);   // or route model binding: public function destroy(Lead $lead)
-        $lead->delete();
+        $contact = Contact::findOrFail($id);   // or route model binding: public function destroy(contact $contact)
+        $contact->delete();
 
-        return response()->json(null, 204);
+        return response()->json(['success' => true]);
     }
 
     /**
-     * Get toal leads per day (contacts with stage = 'lead')
+     * Get toal leads per day (contacts with stage = 'contact')
      *
      * Optional query params:
      *  - from: YYYY-MM-DD
@@ -133,9 +142,11 @@ class ContactController extends Controller
      */
     public function getDailyLeads(Request $request)
     {
-        $query = Contact::query()
-            ->selectRaw('DATE(created_at) as date, COUNT(*) as total')
-            ->where('stage', 'lead')
+        // TODO: allow custom id of lead (not fix)
+
+        $query = ContactStageHistory::query()
+            ->selectRaw('DATE(created_at) as date, COUNT(DISTINCT contact_id) as total')
+            ->where('contact_stage_id', '2')
             ->groupBy(DB::raw('DATE(created_at)'))
             ->orderBy('date', 'desc');
         // Optional: filter date range

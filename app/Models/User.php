@@ -7,13 +7,16 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
 /**
  * Class User
  *
  * @property int $id
+ * @property string $name
  * @property string $email
  * @property Carbon|null $email_verified_at
  * @property string $password
@@ -23,6 +26,8 @@ use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
  */
 class User extends Authenticatable implements JWTSubject
 {
+    use HasFactory, Notifiable;
+
     protected $table = 'users';
 
     protected $casts = [
@@ -33,19 +38,28 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password',
         'remember_token',
-        'email_verified_at',
     ];
 
     protected $fillable = [
+        'name',
         'email',
+        'email_verified_at',
+        'password',
+        'remember_token',
     ];
 
-    public function getJWTIdentifier(): mixed
+    /**
+     * Get the identifier stored in the subject claim of the JWT.
+     */
+    public function getJWTIdentifier()
     {
         return $this->getKey();
     }
 
-    public function getJWTCustomClaims(): mixed
+    /**
+     * Custom claims for JWT (if any).
+     */
+    public function getJWTCustomClaims(): array
     {
         return [];
     }

@@ -285,6 +285,7 @@ return [
             'password_resets',
             'personal_access_tokens',
             'password_reset_tokens',
+            'users',
         ],
 
         /*
@@ -457,7 +458,6 @@ return [
         | When enable_return_types is set to true, return type declarations are added
         | to all generated relation methods for your models.
         |
-        | NOTE: This requires PHP 7.0 or later.
         |
         */
         'enable_return_types' => false,
@@ -517,18 +517,18 @@ return [
     |
     */
 
-//    'connections' => [
-//        'read_only_external' => [
-//            'parent' => \App\Models\ReadOnlyModel::class,
-//            'connection' => true,
-//            'users' => [
-//                'connection' => false,
-//            ],
-//            'my_other_database' => [
-//                'password_resets' => [
-//                    'connection' => false,
-//                ]
-//            ]
-//        ],
-//    ],
+    //    'connections' => [
+    //        'read_only_external' => [
+    //            'parent' => \App\Models\ReadOnlyModel::class,
+    //            'connection' => true,
+    //            'users' => [
+    //                'connection' => false,
+    //            ],
+    //            'my_other_database' => [
+    //                'password_resets' => [
+    //                    'connection' => false,
+    //                ]
+    //            ]
+    //        ],
+    //    ],
 ];
