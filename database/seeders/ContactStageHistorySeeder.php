@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\ContactStageHistory;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 
 class ContactStageHistorySeeder extends Seeder
 {
@@ -12,6 +12,7 @@ class ContactStageHistorySeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
+    {
         $stage_history = [
             ['id' => '1', 'contact_id' => '1', 'contact_stage_id' => '1', 'created_at' => '2025-11-21T15:30:00Z'],
             ['id' => '2', 'contact_id' => '2', 'contact_stage_id' => '1', 'created_at' => '2025-11-21T15:30:00Z'],
@@ -114,73 +115,87 @@ class ContactStageHistorySeeder extends Seeder
             ['id' => '88', 'contact_id' => '88', 'contact_stage_id' => '1', 'created_at' => '2025-07-28T12:31:00Z'],
             ['id' => '89', 'contact_id' => '89', 'contact_stage_id' => '1', 'created_at' => '2025-08-28T12:31:00Z'],
             ['id' => '90', 'contact_id' => '90', 'contact_stage_id' => '1', 'created_at' => '2025-09-28T12:31:00Z'],
-            ['id' => '91', 'name' => 'Liam Hughes', 'tel' => '123-887-6543', 'email' => 'liam.hughes2@gmail.com', 'source' => 'Online', 'address' => '1021 Maple Ln', 'stage_id' => '1', 'created_at' => '2025-10-28T12:31:00Z'],
-            ['id' => '92', 'name' => 'Emma Flores', 'tel' => '234-776-5432', 'email' => 'emma.flores2@gmail.com', 'source' => 'Web', 'address' => '1022 Oak Ave', 'stage_id' => '1', 'created_at' => '2025-11-28T12:31:00Z'],
-            ['id' => '93', 'name' => 'Noah Gonzales', 'tel' => '345-665-4321', 'email' => 'noah.gonzales2@gmail.com', 'source' => 'Event', 'address' => '1023 Pine Rd', 'stage_id' => '1', 'created_at' => '2025-01-28T12:31:00Z'],
-            ['id' => '94', 'name' => 'Ava Ramirez', 'tel' => '456-554-3210', 'email' => 'ava.ramirez2@gmail.com', 'source' => 'Referral', 'address' => '1024 Birch Ct', 'stage_id' => '1', 'created_at' => '2025-02-28T12:31:00Z'],
-            ['id' => '95', 'name' => 'Benjamin Murphy', 'tel' => '567-443-2109', 'email' => 'benjamin.murphy2@gmail.com', 'source' => 'Web', 'address' => '1025 Cedar Ln', 'stage_id' => '1', 'created_at' => '2025-03-28T12:31:00Z'],
+            ['id' => '91', 'contact_id' => '91', 'contact_stage_id' => '1', 'created_at' => '2025-01-14T03:21:47Z'],
+            ['id' => '92', 'contact_id' => '92', 'contact_stage_id' => '1', 'created_at' => '2025-07-03T16:55:12Z'],
+            ['id' => '93', 'contact_id' => '93', 'contact_stage_id' => '1', 'created_at' => '2025-04-22T09:13:05Z'],
+            ['id' => '94', 'contact_id' => '94', 'contact_stage_id' => '1', 'created_at' => '2025-11-09T21:44:39Z'],
+            ['id' => '95', 'contact_id' => '95', 'contact_stage_id' => '1', 'created_at' => '2025-03-27T06:02:18Z'],
 
-            ['id' => '96', 'name' => 'Mia Price', 'tel' => '678-332-1098', 'email' => 'mia.price2@gmail.com', 'source' => 'Online', 'address' => '1026 Maple Ave', 'stage_id' => '1', 'created_at' => '2025-01-28T12:31:00Z'],
-            ['id' => '97', 'name' => 'Oliver Murphy', 'tel' => '789-221-0987', 'email' => 'oliver.murphy2@gmail.com', 'source' => 'Referral', 'address' => '1027 Oak Blvd', 'stage_id' => '1', 'created_at' => '2025-02-28T12:31:00Z'],
-            ['id' => '98', 'name' => 'Sophia Sanchez', 'tel' => '890-110-9876', 'email' => 'sophia.sanchez2@gmail.com', 'source' => 'Event', 'address' => '1028 Pine St', 'stage_id' => '1', 'created_at' => '2025-03-28T12:31:00Z'],
-            ['id' => '99', 'name' => 'James Ramirez', 'tel' => '901-009-8765', 'email' => 'james.ramirez2@gmail.com', 'source' => 'Web', 'address' => '1029 Walnut Rd', 'stage_id' => '1', 'created_at' => '2025-04-28T12:31:00Z'],
-            ['id' => '100', 'name' => 'Isabella Vasquez', 'tel' => '012-998-7654', 'email' => 'isabella.vasquez2@gmail.com', 'source' => 'Referral', 'address' => '1030 Elm St', 'stage_id' => '1', 'created_at' => '2025-05-28T12:31:00Z'],
-            ['id' => '101', 'name' => 'Liam Carter', 'tel' => '111-222-3101', 'email' => 'liam.carter3@gmail.com', 'source' => 'Online', 'address' => '1031 Maple Ave', 'stage_id' => '1', 'created_at' => '2025-06-28T12:31:00Z'],
-            ['id' => '102', 'name' => 'Emma Turner', 'tel' => '111-222-3102', 'email' => 'emma.turner3@gmail.com', 'source' => 'Web', 'address' => '1032 Oak Blvd', 'stage_id' => '1', 'created_at' => '2025-07-28T12:31:00Z'],
-            ['id' => '103', 'name' => 'Noah Phillips', 'tel' => '111-222-3103', 'email' => 'noah.phillips3@gmail.com', 'source' => 'Event', 'address' => '1033 Pine St', 'stage_id' => '1', 'created_at' => '2025-08-28T12:31:00Z'],
-            ['id' => '104', 'name' => 'Ava Collins', 'tel' => '111-222-3104', 'email' => 'ava.collins3@gmail.com', 'source' => 'Referral', 'address' => '1034 Birch Ct', 'stage_id' => '1', 'created_at' => '2025-09-28T12:31:00Z'],
-            ['id' => '105', 'name' => 'Benjamin Ward', 'tel' => '111-222-3105', 'email' => 'benjamin.ward3@gmail.com', 'source' => 'Web', 'address' => '1035 Cedar Ln', 'stage_id' => '1', 'created_at' => '2025-10-28T12:31:00Z'],
+            ['id' => '96', 'contact_id' => '96', 'contact_stage_id' => '1', 'created_at' => '2025-08-19T14:35:51Z'],
+            ['id' => '97', 'contact_id' => '97', 'contact_stage_id' => '1', 'created_at' => '2025-02-06T01:27:33Z'],
+            ['id' => '98', 'contact_id' => '98', 'contact_stage_id' => '1', 'created_at' => '2025-10-11T18:49:26Z'],
+            ['id' => '99', 'contact_id' => '99', 'contact_stage_id' => '1', 'created_at' => '2025-06-24T07:18:09Z'],
+            ['id' => '100', 'contact_id' => '100', 'contact_stage_id' => '1', 'created_at' => '2025-09-30T12:03:57Z'],
+            ['id' => '101', 'contact_id' => '101', 'contact_stage_id' => '1', 'created_at' => '2025-05-08T23:41:29Z'],
+            ['id' => '102', 'contact_id' => '102', 'contact_stage_id' => '1', 'created_at' => '2025-12-17T04:56:42Z'],
+            ['id' => '103', 'contact_id' => '103', 'contact_stage_id' => '1', 'created_at' => '2025-01-29T15:22:54Z'],
+            ['id' => '104', 'contact_id' => '104', 'contact_stage_id' => '1', 'created_at' => '2025-03-05T10:14:31Z'],
+            ['id' => '105', 'contact_id' => '105', 'contact_stage_id' => '1', 'created_at' => '2025-07-21T02:48:16Z'],
 
-            ['id' => '106', 'name' => 'Mason Brooks', 'tel' => '111-222-3106', 'email' => 'mason.brooks3@gmail.com', 'source' => 'Online', 'address' => '1036 Maple Ave', 'stage_id' => '1', 'created_at' => '2025-11-28T12:31:00Z'],
-            ['id' => '107', 'name' => 'Sophia Reed', 'tel' => '111-222-3107', 'email' => 'sophia.reed3@gmail.com', 'source' => 'Referral', 'address' => '1037 Oak Blvd', 'stage_id' => '1', 'created_at' => '2025-01-28T12:31:00Z'],
-            ['id' => '108', 'name' => 'Ethan Bailey', 'tel' => '111-222-3108', 'email' => 'ethan.bailey3@gmail.com', 'source' => 'Event', 'address' => '1038 Pine St', 'stage_id' => '1', 'created_at' => '2025-02-28T12:31:00Z'],
-            ['id' => '109', 'name' => 'Isabella Rivera', 'tel' => '111-222-3109', 'email' => 'isabella.rivera3@gmail.com', 'source' => 'Web', 'address' => '1039 Walnut Rd', 'stage_id' => '1', 'created_at' => '2025-03-28T12:31:00Z'],
-            ['id' => '110', 'name' => 'Lucas Cooper', 'tel' => '111-222-3110', 'email' => 'lucas.cooper3@gmail.com', 'source' => 'Referral', 'address' => '1040 Elm St', 'stage_id' => '1', 'created_at' => '2025-04-28T12:31:00Z'],
+            ['id' => '106', 'contact_id' => '106', 'contact_stage_id' => '1', 'created_at' => '2025-11-27T19:37:04Z'],
+            ['id' => '107', 'contact_id' => '107', 'contact_stage_id' => '1', 'created_at' => '2025-04-02T08:19:45Z'],
+            ['id' => '108', 'contact_id' => '108', 'contact_stage_id' => '1', 'created_at' => '2025-06-13T05:06:58Z'],
+            ['id' => '109', 'contact_id' => '109', 'contact_stage_id' => '1', 'created_at' => '2025-09-01T17:52:21Z'],
+            ['id' => '110', 'contact_id' => '110', 'contact_stage_id' => '1', 'created_at' => '2025-02-18T11:33:39Z'],
 
-            ['id' => '111', 'name' => 'Amelia Richardson', 'tel' => '111-222-3111', 'email' => 'amelia.richardson3@gmail.com', 'source' => 'Online', 'address' => '1041 Maple Ln', 'stage_id' => '1', 'created_at' => '2025-05-28T12:31:00Z'],
-            ['id' => '112', 'name' => 'Logan Cox', 'tel' => '111-222-3112', 'email' => 'logan.cox3@gmail.com', 'source' => 'Web', 'address' => '1042 Oak Ave', 'stage_id' => '1', 'created_at' => '2025-06-28T12:31:00Z'],
-            ['id' => '113', 'name' => 'Charlotte Howard', 'tel' => '111-222-3113', 'email' => 'charlotte.howard3@gmail.com', 'source' => 'Event', 'address' => '1043 Pine Rd', 'stage_id' => '1', 'created_at' => '2025-07-28T12:31:00Z'],
-            ['id' => '114', 'name' => 'Elijah Peterson', 'tel' => '111-222-3114', 'email' => 'elijah.peterson3@gmail.com', 'source' => 'Referral', 'address' => '1044 Birch Ct', 'stage_id' => '1', 'created_at' => '2025-08-28T12:31:00Z'],
-            ['id' => '115', 'name' => 'Harper Gray', 'tel' => '111-222-3115', 'email' => 'harper.gray3@gmail.com', 'source' => 'Web', 'address' => '1045 Cedar Ln', 'stage_id' => '1', 'created_at' => '2025-09-28T12:31:00Z'],
+            ['id' => '111', 'contact_id' => '111', 'contact_stage_id' => '1', 'created_at' => '2025-10-09T00:27:18Z'],
+            ['id' => '112', 'contact_id' => '112', 'contact_stage_id' => '1', 'created_at' => '2025-01-16T13:49:52Z'],
+            ['id' => '113', 'contact_id' => '113', 'contact_stage_id' => '1', 'created_at' => '2025-08-05T09:05:34Z'],
+            ['id' => '114', 'contact_id' => '114', 'contact_stage_id' => '1', 'created_at' => '2025-05-30T21:18:07Z'],
+            ['id' => '115', 'contact_id' => '115', 'contact_stage_id' => '1', 'created_at' => '2025-12-03T03:41:56Z'],
 
-            ['id' => '116', 'name' => 'Daniel Ramirez', 'tel' => '111-222-3116', 'email' => 'daniel.ramirez3@gmail.com', 'source' => 'Online', 'address' => '1046 Maple Ave', 'stage_id' => '1', 'created_at' => '2025-10-28T12:31:00Z'],
-            ['id' => '117', 'name' => 'Evelyn James', 'tel' => '111-222-3117', 'email' => 'evelyn.james3@gmail.com', 'source' => 'Referral', 'address' => '1047 Oak Blvd', 'stage_id' => '1', 'created_at' => '2025-11-28T12:31:00Z'],
-            ['id' => '118', 'name' => 'Matthew Watson', 'tel' => '111-222-3118', 'email' => 'matthew.watson3@gmail.com', 'source' => 'Event', 'address' => '1048 Pine St', 'stage_id' => '1', 'created_at' => '2025-01-28T12:31:00Z'],
-            ['id' => '119', 'name' => 'Abigail Brooks', 'tel' => '111-222-3119', 'email' => 'abigail.brooks3@gmail.com', 'source' => 'Web', 'address' => '1049 Walnut Rd', 'stage_id' => '1', 'created_at' => '2025-02-28T12:31:00Z'],
-            ['id' => '120', 'name' => 'Sebastian Kelly', 'tel' => '111-222-3120', 'email' => 'sebastian.kelly3@gmail.com', 'source' => 'Referral', 'address' => '1050 Elm St', 'stage_id' => '1', 'created_at' => '2025-03-28T12:31:00Z'],
+            ['id' => '116', 'contact_id' => '116', 'contact_stage_id' => '1', 'created_at' => '2025-06-28T06:27:13Z'],
+            ['id' => '117', 'contact_id' => '117', 'contact_stage_id' => '1', 'created_at' => '2025-03-19T18:12:49Z'],
+            ['id' => '118', 'contact_id' => '118', 'contact_stage_id' => '1', 'created_at' => '2025-07-07T04:36:25Z'],
+            ['id' => '119', 'contact_id' => '119', 'contact_stage_id' => '1', 'created_at' => '2025-11-15T16:23:38Z'],
+            ['id' => '120', 'contact_id' => '120', 'contact_stage_id' => '1', 'created_at' => '2025-09-23T02:59:02Z'],
 
-            ['id' => '121', 'name' => 'Emily Sanders', 'tel' => '111-222-3121', 'email' => 'emily.sanders3@gmail.com', 'source' => 'Online', 'address' => '1051 Maple Ln', 'stage_id' => '1', 'created_at' => '2025-04-28T12:31:00Z'],
-            ['id' => '122', 'name' => 'Henry Price', 'tel' => '111-222-3122', 'email' => 'henry.price3@gmail.com', 'source' => 'Web', 'address' => '1052 Oak Ave', 'stage_id' => '1', 'created_at' => '2025-05-28T12:31:00Z'],
-            ['id' => '123', 'name' => 'Scarlett Bennett', 'tel' => '111-222-3123', 'email' => 'scarlett.bennett3@gmail.com', 'source' => 'Event', 'address' => '1053 Pine Rd', 'stage_id' => '1', 'created_at' => '2025-06-28T12:31:00Z'],
-            ['id' => '124', 'name' => 'Jack Wood', 'tel' => '111-222-3124', 'email' => 'jack.wood3@gmail.com', 'source' => 'Referral', 'address' => '1054 Birch Ct', 'stage_id' => '1', 'created_at' => '2025-07-28T12:31:00Z'],
-            ['id' => '125', 'name' => 'Victoria Barnes', 'tel' => '111-222-3125', 'email' => 'victoria.barnes3@gmail.com', 'source' => 'Web', 'address' => '1055 Cedar Ln', 'stage_id' => '1', 'created_at' => '2025-08-28T12:31:00Z'],
-            ['id' => '126', 'name' => 'Ryan Patel', 'tel' => '111-222-3126', 'email' => 'ryan.patel4@gmail.com', 'source' => 'Online', 'address' => '1056 Maple Ave', 'stage_id' => '1', 'created_at' => '2025-01-28T12:31:00Z'],
-            ['id' => '127', 'name' => 'Lily Nguyen', 'tel' => '111-222-3127', 'email' => 'lily.nguyen4@gmail.com', 'source' => 'Web', 'address' => '1057 Oak Blvd', 'stage_id' => '1', 'created_at' => '2025-02-28T12:31:00Z'],
-            ['id' => '128', 'name' => 'Jonathan Kim', 'tel' => '111-222-3128', 'email' => 'jonathan.kim4@gmail.com', 'source' => 'Event', 'address' => '1058 Pine St', 'stage_id' => '1', 'created_at' => '2025-03-28T12:31:00Z'],
-            ['id' => '129', 'name' => 'Natalie Brown', 'tel' => '111-222-3129', 'email' => 'natalie.brown4@gmail.com', 'source' => 'Referral', 'address' => '1059 Walnut Rd', 'stage_id' => '1', 'created_at' => '2025-04-28T12:31:00Z'],
-            ['id' => '130', 'name' => 'Kevin Tran', 'tel' => '111-222-3130', 'email' => 'kevin.tran4@gmail.com', 'source' => 'Web', 'address' => '1060 Elm St', 'stage_id' => '1', 'created_at' => '2025-05-28T12:31:00Z'],
-            ['id' => '131', 'name' => 'Ariana Lopez', 'tel' => '111-222-3131', 'email' => 'ariana.lopez4@gmail.com', 'source' => 'Online', 'address' => '1061 Maple Ln', 'stage_id' => '1', 'created_at' => '2025-06-28T12:31:00Z'],
-            ['id' => '132', 'name' => 'David Wilson', 'tel' => '111-222-3132', 'email' => 'david.wilson4@gmail.com', 'source' => 'Web', 'address' => '1062 Oak Ave', 'stage_id' => '1', 'created_at' => '2025-07-28T12:31:00Z'],
-            ['id' => '133', 'name' => 'Samantha Young', 'tel' => '111-222-3133', 'email' => 'samantha.young4@gmail.com', 'source' => 'Event', 'address' => '1063 Pine Rd', 'stage_id' => '1', 'created_at' => '2025-08-28T12:31:00Z'],
-            ['id' => '134', 'name' => 'Andrew Scott', 'tel' => '111-222-3134', 'email' => 'andrew.scott4@gmail.com', 'source' => 'Referral', 'address' => '1064 Birch Ct', 'stage_id' => '1', 'created_at' => '2025-09-28T12:31:00Z'],
-            ['id' => '135', 'name' => 'Chloe Martinez', 'tel' => '111-222-3135', 'email' => 'chloe.martinez4@gmail.com', 'source' => 'Web', 'address' => '1065 Cedar Ln', 'stage_id' => '1', 'created_at' => '2025-10-28T12:31:00Z'],
+            ['id' => '121', 'contact_id' => '121', 'contact_stage_id' => '1', 'created_at' => '2025-02-01T07:48:55Z'],
+            ['id' => '122', 'contact_id' => '122', 'contact_stage_id' => '1', 'created_at' => '2025-04-26T12:37:41Z'],
+            ['id' => '123', 'contact_id' => '123', 'contact_stage_id' => '1', 'created_at' => '2025-10-14T20:05:19Z'],
+            ['id' => '124', 'contact_id' => '124', 'contact_stage_id' => '1', 'created_at' => '2025-01-05T01:16:03Z'],
+            ['id' => '125', 'contact_id' => '125', 'contact_stage_id' => '1', 'created_at' => '2025-06-11T14:53:22Z'],
+            ['id' => '126', 'contact_id' => '126', 'contact_stage_id' => '1', 'created_at' => '2025-08-17T23:29:48Z'],
+            ['id' => '127', 'contact_id' => '127', 'contact_stage_id' => '1', 'created_at' => '2025-12-22T05:07:36Z'],
+            ['id' => '128', 'contact_id' => '128', 'contact_stage_id' => '1', 'created_at' => '2025-03-03T18:44:11Z'],
+            ['id' => '129', 'contact_id' => '129', 'contact_stage_id' => '1', 'created_at' => '2025-05-20T10:25:59Z'],
+            ['id' => '130', 'contact_id' => '130', 'contact_stage_id' => '1', 'created_at' => '2025-07-29T22:18:27Z'],
+            ['id' => '131', 'contact_id' => '131', 'contact_stage_id' => '1', 'created_at' => '2025-11-04T09:32:44Z'],
+            ['id' => '132', 'contact_id' => '132', 'contact_stage_id' => '1', 'created_at' => '2025-09-12T03:56:08Z'],
+            ['id' => '133', 'contact_id' => '133', 'contact_stage_id' => '1', 'created_at' => '2025-02-24T16:41:27Z'],
+            ['id' => '134', 'contact_id' => '134', 'contact_stage_id' => '1', 'created_at' => '2025-04-08T08:19:53Z'],
+            ['id' => '135', 'contact_id' => '135', 'contact_stage_id' => '1', 'created_at' => '2025-10-31T19:07:15Z'],
 
-            ['id' => '136', 'name' => 'Brandon Lee', 'tel' => '111-222-3136', 'email' => 'brandon.lee4@gmail.com', 'source' => 'Online', 'address' => '1066 Maple Ave', 'stage_id' => '1', 'created_at' => '2025-11-28T12:31:00Z'],
-            ['id' => '137', 'name' => 'Olivia Thompson', 'tel' => '111-222-3137', 'email' => 'olivia.thompson4@gmail.com', 'source' => 'Referral', 'address' => '1067 Oak Blvd', 'stage_id' => '1', 'created_at' => '2025-01-28T12:31:00Z'],
-            ['id' => '138', 'name' => 'Tyler Anderson', 'tel' => '111-222-3138', 'email' => 'tyler.anderson4@gmail.com', 'source' => 'Event', 'address' => '1068 Pine St', 'stage_id' => '1', 'created_at' => '2025-02-28T12:31:00Z'],
-            ['id' => '139', 'name' => 'Grace Walker', 'tel' => '111-222-3139', 'email' => 'grace.walker4@gmail.com', 'source' => 'Web', 'address' => '1069 Walnut Rd', 'stage_id' => '1', 'created_at' => '2025-03-28T12:31:00Z'],
-            ['id' => '140', 'name' => 'Jason Hall', 'tel' => '111-222-3140', 'email' => 'jason.hall4@gmail.com', 'source' => 'Referral', 'address' => '1070 Elm St', 'stage_id' => '1', 'created_at' => '2025-04-28T12:31:00Z'],
+            ['id' => '136', 'contact_id' => '136', 'contact_stage_id' => '1', 'created_at' => '2025-01-22T02:54:29Z'],
+            ['id' => '137', 'contact_id' => '137', 'contact_stage_id' => '1', 'created_at' => '2025-06-05T11:39:48Z'],
+            ['id' => '138', 'contact_id' => '138', 'contact_stage_id' => '1', 'created_at' => '2025-08-23T15:21:06Z'],
+            ['id' => '139', 'contact_id' => '139', 'contact_stage_id' => '1', 'created_at' => '2025-03-10T20:43:37Z'],
+            ['id' => '140', 'contact_id' => '140', 'contact_stage_id' => '1', 'created_at' => '2025-12-19T06:28:54Z'],
 
-            ['id' => '141', 'name' => 'Hannah Lewis', 'tel' => '111-222-3141', 'email' => 'hannah.lewis4@gmail.com', 'source' => 'Online', 'address' => '1071 Maple Ln', 'stage_id' => '1', 'created_at' => '2025-05-28T12:31:00Z'],
-            ['id' => '142', 'name' => 'Zachary King', 'tel' => '111-222-3142', 'email' => 'zachary.king4@gmail.com', 'source' => 'Web', 'address' => '1072 Oak Ave', 'stage_id' => '1', 'created_at' => '2025-06-28T12:31:00Z'],
-            ['id' => '143', 'name' => 'Madison Wright', 'tel' => '111-222-3143', 'email' => 'madison.wright4@gmail.com', 'source' => 'Event', 'address' => '1073 Pine Rd', 'stage_id' => '1', 'created_at' => '2025-07-28T12:31:00Z'],
-            ['id' => '144', 'name' => 'Christian Lopez', 'tel' => '111-222-3144', 'email' => 'christian.lopez4@gmail.com', 'source' => 'Referral', 'address' => '1074 Birch Ct', 'stage_id' => '1', 'created_at' => '2025-08-28T12:31:00Z'],
-            ['id' => '145', 'name' => 'Lauren Hill', 'tel' => '111-222-3145', 'email' => 'lauren.hill4@gmail.com', 'source' => 'Web', 'address' => '1075 Cedar Ln', 'stage_id' => '1', 'created_at' => '2025-09-28T12:31:00Z'],
+            ['id' => '141', 'contact_id' => '141', 'contact_stage_id' => '1', 'created_at' => '2025-05-03T17:36:22Z'],
+            ['id' => '142', 'contact_id' => '142', 'contact_stage_id' => '1', 'created_at' => '2025-07-16T09:11:40Z'],
+            ['id' => '143', 'contact_id' => '143', 'contact_stage_id' => '1', 'created_at' => '2025-09-07T00:58:33Z'],
+            ['id' => '144', 'contact_id' => '144', 'contact_stage_id' => '1', 'created_at' => '2025-11-26T13:22:05Z'],
+            ['id' => '145', 'contact_id' => '145', 'contact_stage_id' => '1', 'created_at' => '2025-02-12T04:47:18Z'],
 
-            ['id' => '146', 'name' => 'Aaron Perez', 'tel' => '111-222-3146', 'email' => 'aaron.perez4@gmail.com', 'source' => 'Online', 'address' => '1076 Maple Ave', 'stage_id' => '1', 'created_at' => '2025-10-28T12:31:00Z'],
-            ['id' => '147', 'name' => 'Kayla Roberts', 'tel' => '111-222-3147', 'email' => 'kayla.roberts4@gmail.com', 'source' => 'Referral', 'address' => '1077 Oak Blvd', 'stage_id' => '1', 'created_at' => '2025-11-28T12:31:00Z'],
-            ['id' => '148', 'name' => 'Dylan Turner', 'tel' => '111-222-3148', 'email' => 'dylan.turner4@gmail.com', 'source' => 'Event', 'address' => '1078 Pine St', 'stage_id' => '1', 'created_at' => '2025-01-28T12:31:00Z'],
-            ['id' => '149', 'name' => 'Michelle Adams', 'tel' => '111-222-3149', 'email' => 'michelle.adams4@gmail.com', 'source' => 'Web', 'address' => '1079 Walnut Rd', 'stage_id' => '1', 'created_at' => '2025-02-28T12:31:00Z'],
-            ['id' => '150', 'name' => 'Joshua Miller', 'tel' => '111-222-3150', 'email' => 'joshua.miller4@gmail.com', 'source' => 'Referral', 'address' => '1080 Elm St', 'stage_id' => '1', 'created_at' => '2025-03-28T12:31:00Z'],
+            ['id' => '146', 'contact_id' => '146', 'contact_stage_id' => '1', 'created_at' => '2025-04-30T22:31:59Z'],
+            ['id' => '147', 'contact_id' => '147', 'contact_stage_id' => '1', 'created_at' => '2025-10-06T07:14:42Z'],
+            ['id' => '148', 'contact_id' => '148', 'contact_stage_id' => '1', 'created_at' => '2025-01-11T12:59:07Z'],
+            ['id' => '149', 'contact_id' => '149', 'contact_stage_id' => '1', 'created_at' => '2025-03-21T05:26:51Z'],
+            ['id' => '150', 'contact_id' => '150', 'contact_stage_id' => '1', 'created_at' => '2025-08-28T16:02:39Z'],
+        ];
+
+        foreach ($stage_history as $history) {
+            ContactStageHistory::updateOrCreate(
+                ['id' => $history['id']], // so you can run seeder multiple times
+                [
+                    'contact_id' => $history['contact_id'],
+                    'contact_stage_id' => $history['contact_stage_id'] ?? null,
+                    'created_at' => isset($history['created_at'])
+                        ? Carbon::parse($history['created_at'])
+                        : now(),
+                ]
+            );
+        }
     }
 }

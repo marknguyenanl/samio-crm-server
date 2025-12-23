@@ -11,6 +11,7 @@ class ContactStageHistory extends Model
     protected $fillable = [
         'contact_id',
         'contact_stage_id',
+        'created_at',
     ];
 
     public function contact()
