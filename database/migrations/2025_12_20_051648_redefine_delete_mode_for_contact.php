@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->foreign('contact_stage_id')
                 ->references('id')
-                ->on('contact_stage_histories')
+                ->on('contact_stages')
                 ->cascadeOnDelete();
         });
     }
