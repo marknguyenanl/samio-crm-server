@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ContactStageSeeder::class,
             ContactSeeder::class,
             ContactStageHistorySeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

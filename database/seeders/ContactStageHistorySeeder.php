@@ -231,6 +231,10 @@ class ContactStageHistorySeeder extends Seeder
             ['id' => '193', 'contact_id' => '33', 'contact_stage_id' => '4', 'created_at' => '2025-07-12T08:36:12Z'],
             ['id' => '194', 'contact_id' => '36', 'contact_stage_id' => '4', 'created_at' => '2025-11-20T19:48:33Z'],
             ['id' => '195', 'contact_id' => '39', 'contact_stage_id' => '4', 'created_at' => '2025-12-28T11:21:47Z'],
+
+            ['id' => '196', 'contact_id' => '148', 'contact_stage_id' => '2', 'created_at' => '2025-10-29T22:14:57Z'],
+            ['id' => '197', 'contact_id' => '149', 'contact_stage_id' => '2', 'created_at' => '2025-10-29T22:10:47Z'],
+            ['id' => '198', 'contact_id' => '150', 'contact_stage_id' => '2', 'created_at' => '2025-10-29T22:03:37Z'],
         ];
 
         foreach ($stage_history as $history) {

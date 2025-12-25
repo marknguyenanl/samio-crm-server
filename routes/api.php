@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactStageController;
 use App\Http\Controllers\ContactStageHistoryController;
+use App\Http\Controllers\MetricController;
 use Illuminate\Http\Middleware\HandleCors;
 use Illuminate\Support\Facades\Route;
 
@@ -27,10 +28,11 @@ Route::group([
     Route::get('/contacts', [ContactController::class, 'getContacts'])->name('getContacts');
     Route::patch('/contacts/{id}', [ContactController::class, 'updateContact'])->name('updateContact');
     Route::delete('/contacts/{id}', [ContactController::class, 'deleteContact'])->name('deleteContact');
-    Route::get('/contacts/daily-leads', [ContactController::class, 'getDailyLeads'])->name('getDailyLeads');
 
     Route::apiResource('contact-stages', ContactStageController::class);
     Route::post('/contact-stages/next', [ContactStageController::class, 'nextStage'])->name('contactStages.next');
 
     Route::apiResource('contact-stage-history', ContactStageHistoryController::class);
+
+    Route::get('/metrics/total-leads-per-day', [MetricController::class, 'getTotalLeadsPerDay'])->name('getTotalLeadsPerDay');
 });
