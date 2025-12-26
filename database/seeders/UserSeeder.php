@@ -31,7 +31,5 @@ class UserSeeder extends Seeder
             );
         }
 
-        // Example: generate 3 random users
-        User::factory()->count(3)->create();
     }
 }
