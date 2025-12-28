@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactStageController;
 use App\Http\Controllers\ContactStageHistoryController;
 use App\Http\Controllers\MetricController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Http\Middleware\HandleCors;
 use Illuminate\Support\Facades\Route;
 
@@ -35,4 +36,7 @@ Route::group([
     Route::apiResource('contact-stage-history', ContactStageHistoryController::class);
 
     Route::get('/metrics/total-leads-per-day', [MetricController::class, 'getTotalLeadsPerDay'])->name('getTotalLeadsPerDay');
+    Route::get('/metrics/conversion-rate', [MetricController::class, 'getConversionRate'])->name('getConversionRate');
+
+    Route::apiResource('orders', OrderController::class);
 });
